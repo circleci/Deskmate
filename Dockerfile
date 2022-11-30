@@ -40,7 +40,7 @@ RUN GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -ldflags="-w -s" -o /go/bin/s
 #################################
 # STEP 3 create permissioned user
 #################################
-FROM alpine AS user
+FROM alpine:3.15 AS user
 # Install git + SSL ca certificates.
 # Git is required for fetching the dependencies.
 # Ca-certificates is required to call HTTPS endpoints.
@@ -65,7 +65,7 @@ RUN adduser \
 # STEP 4 build a small image
 ############################
 # Can't run from sratch, need to be able to `chmod`
-FROM alpine
+FROM alpine:3.15
 
 # Install curl
 RUN apk update && apk --no-cache add curl
