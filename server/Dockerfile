@@ -1,4 +1,4 @@
-FROM golang
+FROM golang:1-bullseye
 
 # if left blank app will run with dev settings
 # to build production image run:
